@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -17,7 +17,14 @@ module.exports = {
       },
     },
     extend: {
+      maxWidth: {
+        "screen-4xl": "1920px",
+      },
       colors: {
+        "shop-primary": "hsl(var(--shop-primary))",
+        "shop-crimson": "hsl(var(--shop-crimson))",
+        "shop-red": "hsl(var(--shop-red))",
+        "shop-dark-purple": "hsl(var(--shop-dark-purple))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -58,6 +65,11 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "open-menu": {
+          "0%": { tansform: "scaleY(0)" },
+          "80%": { tansform: "scaleY(1.2)" },
+          "100%": { tansform: "scaleY(1)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -70,8 +82,9 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "open-menu": "open-menu 0.5s ease-in-out forwards",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

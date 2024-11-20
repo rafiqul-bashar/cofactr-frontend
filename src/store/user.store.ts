@@ -19,7 +19,6 @@ export interface ProductsOrOrders {
 type userStoreT = {
   AUTHENTICATED: boolean;
   USER: USER | null;
-  TOKEN: string | null;
   SAVE_USER: (userData: USER) => void;
   LOGOUT_USER: () => void;
 };
@@ -29,18 +28,16 @@ const userStore = create(
     (set) => ({
       AUTHENTICATED: false,
       USER: null,
-      TOKEN: null,
+
       SAVE_USER: (data: USER) =>
         set(() => ({
           AUTHENTICATED: true,
           USER: data,
-          TOKEN: data.token,
         })),
       LOGOUT_USER: () =>
         set(() => ({
           AUTHENTICATED: false,
           USER: null,
-          TOKEN: null,
         })),
     }),
     { name: "user-in" }

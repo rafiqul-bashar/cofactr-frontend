@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Navigate, Route, Routes } from "react-router-dom";
 import userStore from "./store/user.store";
 import LayoutMain from "./components/custom/LayoutMain";
@@ -11,18 +8,28 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NotFound from "./pages/NotFound";
 import CartPage from "./pages/CartPage";
+import MyProfile from "./components/custom/public/MyProfile";
+import AboutUsPage from "./pages/AboutUsPage";
+import ContactPage from "./pages/dashboard/ContactPage";
 
 function App() {
-  // return <LoadingStatus />;
   const { AUTHENTICATED } = userStore((state) => state);
+
   return (
     <>
       <Routes>
         <Route path="/" element={<LayoutMain />}>
           <Route index={true} element={<HomePage />} />
           <Route path="/products" element={<ExploreProductsPage />} />
-          <Route path="/products/:id" element={<ExploreSingleProductPage />} />
+          <Route path="/product/:id" element={<ExploreSingleProductPage />} />
+          <Route path="/products/search" element={<ExploreProductsPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/my-profile"
+            element={AUTHENTICATED ? <MyProfile /> : <Navigate to="/" />}
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LayoutMain />}>

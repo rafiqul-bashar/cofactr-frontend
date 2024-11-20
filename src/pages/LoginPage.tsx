@@ -3,6 +3,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import userStore from "../store/user.store";
+import { useMutation } from "@tanstack/react-query";
+import { Login_Credentials, loginToServer } from "../api/auth.requests";
+import LoadingStatus from "../components/custom/LoadingStatus";
+import { useState } from "react";
+
+import { useToast } from "../components/ui/use-toast";
+
 const dU = {
   products: {
     default: [],
@@ -20,12 +27,40 @@ const dU = {
   token:
     "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWQiOiI2Njg0ZTVmOWQ3MWM5NTkyZjE0ZDZjMjkiLCJleHAiOjE3MjAwNzI4NjF9.iump7q6PV8Q_-Tm__MxaQrHsXMwvK6Iz0SYEJxvj-mg",
 };
+
+const dC = { email: "test@gmail.com", password: "test1234" };
 export default function LoginPage() {
-  const { AUTHENTICATED, USER, SAVE_USER, LOGOUT_USER } = userStore(
-    (state) => state
-  );
+  const { SAVE_USER } = userStore((state) => state);
+  const [backendResponse, setBackendResponse] = useState({});
+  const { toast } = useToast();
+  const mutation = useMutation({
+    mutationFn: (credentials: Login_Credentials) => loginToServer(credentials),
+    onSuccess: (data) => {
+      console.log(data);
+      if (data?.message) {
+        setBackendResponse(data);
+      }
+      if (data?.success) {
+        toast({
+          variant: "success",
+          title: data.message,
+        });
+        SAVE_USER(data.data);
+      }
+    },
+    onError: (data) => {
+      console.error(data);
+    },
+  });
+
+  const LIF = () => {
+    mutation.mutate({ email: dC.email, password: "test1234" });
+  };
+
+  if (mutation.isPending) return <LoadingStatus />;
+
   return (
-    <div>
+    <div className="py-8 md:py-20">
       <div className="mx-auto grid w-[350px] gap-6">
         <div className="grid gap-2 text-center">
           <h1 className="text-3xl font-bold">Login</h1>
@@ -55,11 +90,18 @@ export default function LoginPage() {
             </div>
             <Input id="password" type="password" required />
           </div>
-          <Button
-            onClick={() => SAVE_USER(dU)}
-            type="submit"
-            className="w-full"
-          >
+          {backendResponse?.message && (
+            <h5
+              className={`text-base leading-5 font-medium  rounded-md opacity-100 font-regular p-2 ${
+                backendResponse?.success
+                  ? "bg-green-100 text-green-700"
+                  : "bg-red-200 text-red-700 "
+              }`}
+            >
+              {backendResponse?.message}
+            </h5>
+          )}
+          <Button onClick={() => LIF()} type="submit" className="w-full">
             Login
           </Button>
           <Button variant="outline" className="w-full">
@@ -68,7 +110,7 @@ export default function LoginPage() {
         </div>
         <div className="mt-4 text-center text-sm">
           Don&apos;t have an account?{" "}
-          <Link to="#" className="underline">
+          <Link to="/register" className="underline">
             Sign up
           </Link>
         </div>
