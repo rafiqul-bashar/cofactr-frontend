@@ -67,3 +67,12 @@
     @apply bg-[#0F0F0F] text-white  font-semibold transition-all duration-300 ease-in-out transform scale-105;
   }
 }
+
+@layer utilities {
+  .img-shadow {
+    filter: drop-shadow(40px 50px 25px #0f1115);
+  }
+  .img-shadow2 {
+    filter: drop-shadow(40px 50px 25px #3030307a);
+  }
+}

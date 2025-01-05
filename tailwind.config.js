@@ -20,11 +20,19 @@ module.exports = {
       maxWidth: {
         "screen-4xl": "1920px",
       },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+        },
+      },
       colors: {
         "shop-primary": "hsl(var(--shop-primary))",
         "shop-crimson": "hsl(var(--shop-crimson))",
         "shop-red": "hsl(var(--shop-red))",
         "shop-dark-purple": "hsl(var(--shop-dark-purple))",
+        lightOrange: "#F1DABF",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

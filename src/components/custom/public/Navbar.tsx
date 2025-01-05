@@ -8,7 +8,7 @@ import { useToast } from "../../ui/use-toast";
 import useCartStore from "../../../store/cart.store";
 import Logo from "../Logo";
 import DesktopBar from "../navigation/DesktopBar";
-
+import { motion } from "framer-motion";
 import useGlobalUIStore from "../../../store/global_ui.store";
 
 export default function Navbar() {

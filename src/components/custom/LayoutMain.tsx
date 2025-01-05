@@ -19,11 +19,12 @@ export default function LayoutMain() {
 
   return (
     <div className="relative">
-      <div className="max-w-screen-4xl w-full mx-auto min-h-screen">
+      <div className="overflow-x-hidden">
+        {/* <div className="max-w-screen-4xl w-full mx-auto min-h-screen"> */}
         <Navbar />
-        <div className="">
-          <Outlet />
-        </div>
+
+        <Outlet />
+
         <Footer />
         {/* Black Overlay */}
         {MENU_OPEN && (

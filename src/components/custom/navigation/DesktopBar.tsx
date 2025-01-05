@@ -4,14 +4,24 @@ import Logo from "../Logo";
 import { ShoppingCart, User2 } from "lucide-react";
 import useCartStore from "../../../store/cart.store";
 const AUTHENTICATED = false;
-
+import { motion } from "framer-motion";
 // other primary color #ed7A5d
 const DesktopBar = () => {
   const { cartItems } = useCartStore();
 
   return (
     <div className="w-full hidden md:block top-0 left-0 z-40 bg-shop-primary h-full py-4">
-      <div className="container">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 10,
+          delay: 1.5,
+        }}
+        className="container"
+      >
         <div className="grid grid-cols-6 text-center">
           <Logo />
           {/* Other Links */}
@@ -50,7 +60,7 @@ const DesktopBar = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
