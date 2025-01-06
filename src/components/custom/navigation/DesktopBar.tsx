@@ -10,7 +10,7 @@ const DesktopBar = () => {
   const { cartItems } = useCartStore();
 
   return (
-    <div className="w-full hidden md:block top-0 left-0 z-40 bg-shop-primary h-full py-4">
+    <div className="w-full hidden md:block top-0 left-0 z-40 bg-shop-primary h-full py-4 ">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

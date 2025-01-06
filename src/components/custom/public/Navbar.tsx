@@ -1,19 +1,18 @@
 import Hamburger from "hamburger-react";
-import { LogOutIcon, ShoppingCart, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
+
+import { Link, useLocation } from "react-router-dom";
 import userStore from "../../../store/user.store";
 import axios from "axios";
 import { BASE_URL } from "../../../lib/constants";
 import { useToast } from "../../ui/use-toast";
 import useCartStore from "../../../store/cart.store";
-import Logo from "../Logo";
-import DesktopBar from "../navigation/DesktopBar";
-import { motion } from "framer-motion";
+
 import useGlobalUIStore from "../../../store/global_ui.store";
 
 export default function Navbar() {
   const { AUTHENTICATED, LOGOUT_USER, USER } = userStore((state) => state);
   const { MENU_OPEN, TOGGLE_MENU } = useGlobalUIStore((state) => state);
+  const { pathname } = useLocation();
   const { toast } = useToast();
   const handleLogOut = async () => {
     try {
@@ -45,14 +44,45 @@ export default function Navbar() {
     }
   };
 
-  // return <Sample />;
   const { cartItems } = useCartStore();
 
   return (
-    <header className="bg-zinc-50 w-full sticky top-0 py-3 px-4 md:px-0 md:py-0 ">
-      <nav id="desktop_nav" aria-label="desktop" className="md:container">
-        {/*  mobile first | md hidden */}
-        <div className="md:hidden flex items-center justify-between ">
+    <header
+      className={`${
+        pathname === "/" ? "absolute " : "block bg-[#232831]"
+      } md:sticky top-0 left-0 w-full md:bg-shop-primary md:h-[11vh] h-[9vh] z-40 grid items-center `}
+    >
+      <div className="container flex items-center justify-between md:text-[#232831] text-white ">
+        {" "}
+        <div className="hidden md:flex items-center tracking-wide gap-6">
+          <h2 className="font-medium tracking-tight text-xl text-[#232831]">
+            Home
+          </h2>
+          <h2 className="font-medium tracking-tight text-xl text-[#232831]">
+            Products
+          </h2>
+          <h2 className="font-medium tracking-tight text-xl text-[#232831]">
+            Track Order
+          </h2>
+        </div>
+        <Link to="/">
+          <h2 className="font-bold tracking-tight text-3xl text-shop-primary md:text-[#232831]">
+            MOON <span className="text-gray-600">SKIN</span>
+          </h2>
+        </Link>
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center tracking-wide gap-6">
+          <h2 className="font-medium tracking-tight text-xl text-[#232831]">
+            Cart ( 0. 00)
+          </h2>
+          <h2 className="font-medium tracking-tight text-xl text-[#232831]">
+            Wishlist ( 0 )
+          </h2>
+          <h2 className="font-medium tracking-tight text-xl text-[#232831]">
+            Login
+          </h2>
+        </div>
+        <div className="md:hidden">
           <Hamburger
             size={28}
             toggled={MENU_OPEN}
@@ -64,10 +94,13 @@ export default function Navbar() {
               }
             }}
           />
+        </div>
+      </div>
+      {/* <nav id="desktop_nav" aria-label="desktop" className="md:container">
+        <div className="md:hidden flex items-center justify-between ">
 
-          <Link to="/">
-            <Logo />
-          </Link>
+
+
           <div className="flex items-center space-x-4">
             <Link className="" to={AUTHENTICATED ? "/my-profile" : "/login"}>
               <User2 className="w-8 h-8" />
@@ -94,8 +127,8 @@ export default function Navbar() {
             )}
           </div>
         </div>
-      </nav>
-      <DesktopBar />
+      </nav> */}
+      {/* <DesktopBar /> */}
 
       {/* Desktop Bar  */}
     </header>

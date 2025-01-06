@@ -9,7 +9,7 @@ const Logo = () => {
           alt="logo"
           className="w-8 h-8"
         />
-        <h2 className="italic font-bold tracking-tighter text-xl">Cofactr</h2>
+        <h2 className="italic font-bold tracking-tight text-xl">COFACTR</h2>
       </div>
     </Link>
   );

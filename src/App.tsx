@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import userStore from "./store/user.store";
-import LayoutMain from "./components/custom/LayoutMain";
-import MyProfile from "./components/custom/public/MyProfile";
+import { LayoutMain, MyProfile } from "./components/custom";
+
 import {
   HomePage,
   ExploreSingleProductPage,

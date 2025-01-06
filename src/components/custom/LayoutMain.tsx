@@ -20,11 +20,9 @@ export default function LayoutMain() {
   return (
     <div className="relative">
       <div className="overflow-x-hidden">
-        {/* <div className="max-w-screen-4xl w-full mx-auto min-h-screen"> */}
         <Navbar />
-
+        {/* all the public pages */}
         <Outlet />
-
         <Footer />
         {/* Black Overlay */}
         {MENU_OPEN && (
@@ -35,7 +33,8 @@ export default function LayoutMain() {
         )}
       </div>
 
-      <MobileBar />
+      {/* MobileSideBar */}
+      {MENU_OPEN && <MobileBar />}
     </div>
   );
 }

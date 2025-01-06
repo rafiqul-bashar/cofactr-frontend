@@ -1,6 +1,6 @@
 export const brandConfig = {
-  brand_name: "LYO SHOES",
-  tagline: "Stylish Footwear for Every Occasion",
+  brand_name: "Moon Skin",
+  tagline: "Grow your glow",
   logo_url: "/images/lyo-shoes-logo.png",
   banner_image: "/images/lyo-shoes-banner.jpg",
   hero_banner_text:
