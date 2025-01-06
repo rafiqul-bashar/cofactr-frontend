@@ -1,19 +1,45 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import userStore from "./store/user.store";
 import LayoutMain from "./components/custom/LayoutMain";
-import HomePage from "./pages/HomePage";
-import ExploreSingleProductPage from "./pages/ExploreSingleProductPage";
-import ExploreProductsPage from "./pages/ExploreProductsPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import NotFound from "./pages/NotFound";
-import CartPage from "./pages/CartPage";
 import MyProfile from "./components/custom/public/MyProfile";
-import AboutUsPage from "./pages/AboutUsPage";
-import ContactPage from "./pages/dashboard/ContactPage";
+import {
+  HomePage,
+  ExploreSingleProductPage,
+  ExploreProductsPage,
+  LoginPage,
+  RegisterPage,
+  NotFound,
+  CartPage,
+  AboutUsPage,
+  ContactPage,
+} from "./pages";
+import { useQuery } from "@tanstack/react-query";
 
+import { fetchProducts } from "./api/product.requests";
+import { useEffect } from "react";
+import useProductStore from "./store/productData.store";
 function App() {
   const { AUTHENTICATED } = userStore((state) => state);
+  const { setProducts, products, setCategories } = useProductStore(
+    (state) => state
+  );
+
+  // global data calling
+
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
+
+  useEffect(() => {
+    data?.length && setProducts(data);
+    setCategories([
+      "electronics",
+      "jewelery",
+      "men's clothing",
+      "women's clothing",
+    ]);
+  }, []);
 
   return (
     <>

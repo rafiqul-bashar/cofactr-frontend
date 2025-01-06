@@ -1,6 +1,8 @@
 import IMG_SRC from "../../../assets/bg-slate.png";
 import HeroMain from "../../../assets/black.png";
+
 import { motion } from "framer-motion";
+import { brandConfig } from "../../../lib/store_details";
 export default function HeroSection() {
   const imageStyle = {
     backgroundImage: `url(${IMG_SRC})`,
@@ -28,7 +30,7 @@ export default function HeroSection() {
                 }}
                 className="text-7xl font-bold leading-tight md:ml-14"
               >
-                HilsBen Coffecon
+                {brandConfig.brand_name}
               </motion.h1>
               <motion.div
                 initial={{ opacity: 0, y: 100 }}
@@ -42,12 +44,9 @@ export default function HeroSection() {
                 className="relative p-4"
               >
                 <div className="relative z-10  space-y-4">
-                  <h1 className="text-2xl">Cheesy Burgers Here!!</h1>
-                  <h1 className="text-sm opacity-55 leading-loose">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Obcaecati necessitatibus velit repellendus accusamus ullam
-                    et blanditiis reiciendis, quia vel doloribus facere ut rerum
-                    a aperiam quis commodi molestias maiores quod.
+                  <h1 className="text-2xl">{brandConfig.tagline}</h1>
+                  <h1 className=" opacity-55 leading-loose">
+                    {brandConfig.hero_banner_text}
                   </h1>
                 </div>
                 <div className="absolute -top-6 -left-10 w-[250px] h-[190px] bg-gray-700/25"></div>
@@ -94,7 +93,7 @@ export default function HeroSection() {
                 className=" z-[1] absolute -top-4 left-[200px]"
               >
                 <div className="text-[124px] font-bold text-[#1a1f29]/40 scale-150 leading-none">
-                  HilsBen Coffecon
+                  {brandConfig.brand_name}
                 </div>
               </motion.div>
             </div>
@@ -111,7 +110,7 @@ export default function HeroSection() {
               className="text-lightOrange mt-[100px] md:mt-0 space-y-8 "
             >
               <h1 className="text-2xl font-bold leading-tight md:ml-14 opacity-0">
-                HilsBen Coffecon
+                {brandConfig.brand_name}
               </h1>
               <div className="relative p-4">
                 <div className="relative z-10  space-y-4">

@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Catamaran:100,200,300,regular,500,600,700,800,900);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,6 +30,7 @@
     --input: 240 5.9% 90%;
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
+    font-family: Catamaran, sans-serif;
   }
 
   .dark {
@@ -73,6 +76,6 @@
     filter: drop-shadow(40px 50px 25px #0f1115);
   }
   .img-shadow2 {
-    filter: drop-shadow(40px 50px 25px #3030307a);
+    filter: drop-shadow(40px 35px 35px #3030307a);
   }
 }

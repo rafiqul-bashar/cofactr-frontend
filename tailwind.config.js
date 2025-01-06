@@ -33,6 +33,8 @@ module.exports = {
         "shop-red": "hsl(var(--shop-red))",
         "shop-dark-purple": "hsl(var(--shop-dark-purple))",
         lightOrange: "#F1DABF",
+        lightGray: "#343434",
+        warmGray: "#F0F2F5",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
