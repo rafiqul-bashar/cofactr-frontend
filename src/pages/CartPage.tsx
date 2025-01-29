@@ -3,23 +3,11 @@ import { Link } from "react-router-dom";
 import CartItemCard from "../components/custom/CartItemCard";
 import { Button } from "../components/ui/button";
 
-//  get total fn
-
-const getTotal = (cartItem) => {
-  let totalQuantity = 0;
-  let totalPrice = 0;
-  cartItem.forEach((item) => {
-    totalQuantity += item.quantity!;
-    totalPrice += item.price! * item.quantity!;
-  });
-  return { totalPrice, totalQuantity };
-};
-
 export default function CartPage() {
-  const { cartItems } = useCartStore();
-
-  const cartTotalQuantity = getTotal(cartItems).totalQuantity;
-  const cartTotalPrice = getTotal(cartItems).totalPrice;
+  const { cartItems, getCartTotal } = useCartStore();
+  const cart = getCartTotal(cartItems);
+  const cartTotalQuantity = cart?.totalQuantity;
+  const cartTotalPrice = cart?.totalPrice;
 
   if (cartItems && cartItems.length < 1) {
     return (
@@ -86,7 +74,7 @@ export default function CartPage() {
                 </dl>
 
                 <div className="flex justify-end">
-                  <Button variant={"secondary"}>Checkout</Button>
+                  <Button className="w-full">Checkout</Button>
                 </div>
               </div>
             </div>

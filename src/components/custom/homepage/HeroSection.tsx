@@ -1,5 +1,6 @@
 import IMG_SRC from "../../../assets/bg-slate.png";
 import HeroMain from "../../../assets/black.png";
+// import HeroMain from "../../../assets/product2.png";
 
 import { motion } from "framer-motion";
 import { brandConfig } from "../../../lib/store_details";
@@ -12,8 +13,8 @@ export default function HeroSection() {
   };
   return (
     <main style={imageStyle}>
-      <section className="w-full">
-        <div className="container md:min-h-[680px] pb-12">
+      <section className="w-full bg-black">
+        <div className="container md:min-h-[680px] pb-12 flex items-center">
           {/* hero section */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center ">
             {/* text content section */}
@@ -65,7 +66,7 @@ export default function HeroSection() {
                 }}
                 src={HeroMain}
                 alt="hero_pic"
-                className="relative z-40 h-[400px] md:h-[89vh] img-shadow"
+                className="relative z-40 h-[400px] md:h-[60vh] img-shadow"
               />
               {/* background shapes */}
               <motion.div

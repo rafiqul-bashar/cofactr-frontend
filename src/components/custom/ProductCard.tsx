@@ -2,7 +2,7 @@ import useCartStore from "../../store/cart.store";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
 import { useToast } from "../ui/use-toast";
-
+import p4 from "../../assets/product4.png";
 export default function ProductCard({ product }) {
   const { addItemToCart } = useCartStore();
   const { toast } = useToast();
@@ -14,34 +14,28 @@ export default function ProductCard({ product }) {
     });
   };
   return (
-    <div className="group bg-zinc-50 shadow-md hover:shadow-xl transition-all duration-200 ease-in rounded-md max-w-sm  text-left hover:bg-shop-primary/10 ">
+    <div className="px-6 group hover:-translate-y-3 transition-all duration-300 ease-linear">
       <Link to={`/product/${product?.id}`}>
         <img
-          className="rounded-t-lg p-4  transition-transform duration-300 h-48 mx-auto"
-          src={product.image}
-          alt="product image"
+          src={p4}
+          alt={product.title}
+          className="img-shadow2 max-w-[200px] max-h-[210px] mx-auto group-hover:scale-125 duration-300 cursor-pointer"
         />
       </Link>
-      <div className="px-5 pb-5">
-        <Link to={`/product/${product?.id}`}>
-          <h3 className="text-gray-900 font-semibold text-xl  ">
-            {product.title.slice(0, 40).trim() + "..."}
-          </h3>
-        </Link>
-        <div className="my-2 text-xs font-medium bg-gray-200 text-gray-700 w-fit px-2 py-0.5 md:text-sm uppercase">
-          {product.category}
-        </div>
-        <div className="md:flex items-center justify-between  space-y-2">
-          <span className="text-3xl font-bold text-gray-900 ">
-            $ {product.price}
-          </span>
-          <Button
-            onClick={onAddToCart}
-            className=" text-shop-dark-purple bg-shop-primary hover:bg-black/90 hover:text-gray-100 font-semibold rounded-sm  px-8 py-2.5 text-center transition ease-linear duration-300 "
-          >
-            Add to cart
+      <div className="space-y-2 mt-6 text-lg text-center">
+        <h2 className="font-bold tracking-wide text-lightGray truncate">
+          {product?.title}
+        </h2>
+        <p className=" text-lightGray font-bold tracking-wide text-center">
+          <span className="text-shop-primary">&#2547;</span> {product.price}
+        </p>
+        <p className="">
+          <Button variant={"ghost"} onClick={onAddToCart} className="">
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-300">
+              Add to cart
+            </span>
           </Button>
-        </div>
+        </p>
       </div>
     </div>
   );
@@ -80,11 +74,11 @@ export default function ProductCard({ product }) {
 
 // demo 2
 //       <div
-//         className="relative group bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
+//         className="rproductative group bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
 //       >
-//         {product.discountLabel && (
+//         {product.discountLabproduct && (
 //           <span className="absolute top-2 left-2 bg-orange-500 text-white text-sm font-bold px-2 py-1 rounded">
-//             {product.discountLabel}
+//             {product.discountLabproduct}
 //           </span>
 //         )}
 

@@ -104,7 +104,6 @@ export default function TopRated() {
               </p>
             </div>
           </motion.div>
-          // <img src={Img1} alt="pid1" />
         ))}
       </motion.div>
     </section>

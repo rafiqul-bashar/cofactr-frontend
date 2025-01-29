@@ -13,34 +13,9 @@ import {
   AboutUsPage,
   ContactPage,
 } from "./pages";
-import { useQuery } from "@tanstack/react-query";
 
-import { fetchProducts } from "./api/product.requests";
-import { useEffect } from "react";
-import useProductStore from "./store/productData.store";
 function App() {
   const { AUTHENTICATED } = userStore((state) => state);
-  const { setProducts, products, setCategories } = useProductStore(
-    (state) => state
-  );
-
-  // global data calling
-
-  const { data, isPending, isError, error } = useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
-  });
-
-  useEffect(() => {
-    data?.length && setProducts(data);
-    setCategories([
-      "electronics",
-      "jewelery",
-      "men's clothing",
-      "women's clothing",
-    ]);
-  }, []);
-
   return (
     <>
       <Routes>

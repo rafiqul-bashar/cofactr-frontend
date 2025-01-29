@@ -2,11 +2,12 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface CartState {
-  cartItems: CartProduct[];
-  addItemToCart: (item: ProductsOrOrders) => void;
+  cartItems: [];
+  addItemToCart: (item: any) => void;
   increaseQuantity: (productId: number) => void;
   decreaseQuantity: (productId: number) => void;
   removeItemFromCart: (productId: number) => void;
+  getCartTotal: () => void;
 }
 const useCartStore = create(
   persist<CartState>(
@@ -60,6 +61,19 @@ const useCartStore = create(
           }
         }
       },
+
+      //  get cart total
+
+      getCartTotal: () => {
+        let totalQuantity = 0;
+        let totalPrice = 0;
+        get().cartItems.forEach((item) => {
+          totalQuantity += item.quantity!;
+          totalPrice += item.price! * item.quantity!;
+        });
+        return { totalPrice, totalQuantity };
+      },
+
       // remove Item
       removeItemFromCart: (productId) => {
         const itemExists = get().cartItems.find(

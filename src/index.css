@@ -66,6 +66,13 @@
   .navLink {
     @apply w-full tracking-wide text-[#333]  transition-all duration-200  ease-linear hover:bg-black/80 hover:text-white hover:font-semibold  p-1 px-2 font-medium;
   }
+  .desktop_navlink {
+    @apply font-semibold hover:-translate-y-1 hover:text-[#F5A132] duration-300  transition-all ease-in-out text-xl text-[#d4d4d4] capitalize;
+  }
+  .desktop_navlink_active {
+    @apply font-semibold scale-105 text-[#F5A132] duration-300  transition-all ease-in-out capitalize text-xl;
+  }
+
   .activeNav {
     @apply bg-[#0F0F0F] text-white  font-semibold transition-all duration-300 ease-in-out transform scale-105;
   }
